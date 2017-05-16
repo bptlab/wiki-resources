@@ -13,14 +13,14 @@ services:
 		command: /bin/bash -c "envsubst < /etc/nginx/nginx.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
 
 	frontend:
-		image: "bptlab/argos-frontend:latest"
+		image: "bptlab/argos-frontend:beta"
 		environment:
 			- HOST
 		volumes:
 			- ./config/frontend-config.js:/src/config/config.js
 
 	backend:
-		image: "bptlab/argos-backend:latest"
+		image: "bptlab/argos-backend:beta"
 		environment:
 			- HOST
 		volumes:
