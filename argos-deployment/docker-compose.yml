@@ -1,43 +1,43 @@
 version: '3'
 services:
-	proxy:
-		image: "nginx:1-alpine"
-		volumes:
-			- ./config/nginx.conf:/etc/nginx/nginx.conf
-		ports:
-			- "8080:80"
-		links:
-			- frontend
-			- backend
-			- unicorn
-		command: /bin/bash -c "envsubst < /etc/nginx/nginx.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+    proxy:
+        image: "nginx:1-alpine"
+        volumes:
+            - ./config/nginx.conf:/etc/nginx/nginx.conf
+        ports:
+            - "8080:80"
+        links:
+            - frontend
+            - backend
+            - unicorn
+        command: /bin/sh -c "envsubst < /etc/nginx/nginx.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
 
-	frontend:
-		image: "bptlab/argos-frontend:beta"
-		environment:
-			- HOST
-		volumes:
-			- ./config/frontend-config.js:/src/config/config.js
+    frontend:
+        image: "bptlab/argos-frontend:beta"
+        environment:
+            - HOST
+        volumes:
+            - ./config/frontend-config.js:/src/config/config.js
 
-	backend:
-		image: "bptlab/argos-backend:beta"
-		environment:
-			- HOST
-		volumes:
-			- ./config/argos-backend.properties:/src/main/resources/argos-backend.properties
-		links:
-			- database
-		depends_on:
-			- unicorn
+    backend:
+        image: "bptlab/argos-backend:beta"
+        environment:
+            - HOST
+        volumes:
+            - ./config/argos-backend.properties:/src/main/resources/argos-backend.properties
+        links:
+            - database
+        depends_on:
+            - unicorn
 
-	unicorn:
-		image: "bptlab/unicorn:latest"
-		volumes:
-			- ./config/unicorn.properties:/usr/local/tomcat/conf/unicorn.properties
-		links:
-			- database
+    unicorn:
+        image: "bptlab/unicorn:latest"
+        volumes:
+            - ./config/unicorn.properties:/usr/local/tomcat/conf/unicorn.properties
+        links:
+            - database
 
-	database:
-		image: "mysql:5"
-		environment:
-			- MYSQL_ROOT_PASSWORD
+    database:
+        image: "mysql:5"
+        environment:
+            - MYSQL_ROOT_PASSWORD
