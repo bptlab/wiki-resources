@@ -3,7 +3,7 @@ services:
     proxy:
         image: "nginx:1-alpine"
         volumes:
-            - ./config/nginx.conf:/etc/nginx/nginx.conf
+            - ./config/nginx.conf:/etc/nginx/nginx-template.conf:ro
         ports:
             - "8080:80"
         links:
@@ -17,7 +17,7 @@ services:
         env_file:
             - host.env
         volumes:
-            - ./config/frontend-config.js:/src/config/config.js
+            - ./config/frontend-config.js:/argos-frontend/src/config/config.js
 
     backend:
         image: "bptlab/argos-backend:beta"
@@ -25,7 +25,7 @@ services:
             - database.env
             - host.env
         volumes:
-            - ./config/argos-backend.properties:/src/main/resources/argos-backend.properties
+            - ./config/argos-backend.properties:/argos-backend/src/main/resources/argos-backend.properties
         links:
             - database
         depends_on:
