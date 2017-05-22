@@ -6,7 +6,8 @@
     "lineId":"STRING",
     "naptanId":"STRING",
     "vehicleId": "STRING",
-    "expectedArrival": "STRING"
+    "expectedArrival": "STRING",
+    "actualArrival": "STRING"
   },
   "queries":{
     "All events of that type": "SELECT * FROM EstimatedArrivalChanged"
