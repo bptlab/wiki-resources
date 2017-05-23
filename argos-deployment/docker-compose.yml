@@ -25,6 +25,8 @@ services:
             - host.env
         volumes:
             - ./config/argos-backend.properties:/argos-backend/src/main/resources/argos-backend.properties
+            - ./event_types:/argos-backend/src/main/resources/event_types
+            - ./static_data:/argos-backend/src/main/resources/static_data
         links:
             - database
         depends_on:
