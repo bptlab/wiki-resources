@@ -5,8 +5,7 @@
     "transportationModeId":"STRING",
     "lineId":"STRING",
     "naptanId":"STRING",
-    "newAppearance": "STRING",
-    "timeOfChange": "STRING"
+    "newAppearance": "STRING"
   },
   "queries":{
     "All events of that type": "SELECT * FROM StopPointAppearanceChanged"
