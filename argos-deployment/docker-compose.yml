@@ -14,15 +14,15 @@ services:
     frontend:
         image: "bptlab/argos-frontend:latest"
         env_file:
-            - host.env
+            - deployment-config/host.env
         volumes:
             - ./config/frontend-config.js:/argos-frontend/src/config/config-template.js
 
     backend:
         image: "bptlab/argos-backend:latest"
         env_file:
-            - database.env
-            - host.env
+            - deployment-config/database.env
+            - deployment-config/host.env
         volumes:
             - ./config/argos-backend.properties:/argos-backend/src/main/resources/argos-backend.properties
             - ./event_types:/argos-backend/src/main/resources/event_types
@@ -35,7 +35,7 @@ services:
     unicorn:
         image: "bptlab/unicorn:latest"
         env_file:
-            - database.env
+            - deployment-config/database.env
         volumes:
             - ./config/unicorn.properties:/usr/local/tomcat/conf/unicorn.properties
         links:
@@ -44,4 +44,4 @@ services:
     database:
         image: "mysql:5"
         env_file:
-            - database.env
+            - deployment-config/database.env
