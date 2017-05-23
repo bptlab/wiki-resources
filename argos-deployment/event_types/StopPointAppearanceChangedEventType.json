@@ -1,0 +1,14 @@
+{
+  "name":"StopPointAppearanceChanged",
+  "timestamp":"timeOfChange",
+  "attributes":{
+    "transportationModeId":"STRING",
+    "lineId":"STRING",
+    "naptanId":"STRING",
+    "newAppearance": "STRING",
+    "timeOfChange": "STRING"
+  },
+  "queries":{
+    "All events of that type": "SELECT * FROM StopPointAppearanceChanged"
+  }
+}
