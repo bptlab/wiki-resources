@@ -12,14 +12,14 @@ services:
             - unicorn
 
     frontend:
-        image: "bptlab/argos-frontend:beta"
+        image: "bptlab/argos-frontend:latest"
         env_file:
             - host.env
         volumes:
             - ./config/frontend-config.js:/argos-frontend/src/config/config-template.js
 
     backend:
-        image: "bptlab/argos-backend:beta"
+        image: "bptlab/argos-backend:latest"
         env_file:
             - database.env
             - host.env
