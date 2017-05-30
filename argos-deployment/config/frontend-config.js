@@ -1,10 +1,14 @@
 const config = {
 	projectName: "Argos",
 	useBackendMock: false,
+	basename: '/',
 	backendRESTRoute: "${HOST}/api",
 	backendWebSocketURL: "${WEBSOCKET_HOST}/notifications",
+	enableCaching: true,
+	language: "en",
 	colors: {
 		primaryDark: "#000051",
+		primaryDarkAlpha: "rgba(0, 0, 81, 0.2)",
 		primary: "#1a237e",
 		primaryLight: "#534bae",
 		accent: "#C99700",
@@ -12,6 +16,8 @@ const config = {
 		text: "#424242",
 		textAlternate: "#ffffff",
 		border: "#e0e0e0",
+		toggleOff: '#9E9E9E',
+		error: "#B71C1C",
 	},
 	descriptions: {
 		textNumberOfEvents: "Number of events",
@@ -19,6 +25,12 @@ const config = {
 		queryInputFieldHint: "Esper EPL Query",
 		queryDescriptionInputFieldHint: 'Description for query',
 		addMapping: "Add Mapping Condition",
+		toggleChildrenEvents: "Show events of children?",
+		selectEntityTypeHint: "Select Entity Type",
+		selectEventTypeHint: "Select Event Type",
+		selectTargetStatusHint: "Target Status, leave empty if no status update is required",
+		selectEntityTypeAttributeHint: "Select Entity Type Attribute",
+		selectEventTypeAttributeHint: "Select Event Type Attribute"
 	},
 	messages: {
 		notFound: "Error 404. The requested page does not exist. You found a glitch in the matrix.",
@@ -45,6 +57,7 @@ const config = {
 			colorLight: "#BDBDBD"
 		},
 	],
+	eventTableChunkSize: 50,
 };
 
 export default config;
