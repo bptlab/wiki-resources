@@ -1,7 +1,7 @@
 const config = {
 	projectName: "Argos",
 	useBackendMock: false,
-	basename: '/',
+	basename: '${BASENAME}',
 	backendRESTRoute: "${HOST}/api",
 	backendWebSocketURL: "${WEBSOCKET_HOST}/notifications",
 	enableCaching: true,
