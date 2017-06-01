@@ -1,11 +1,11 @@
 const config = {
-	projectName: "Argos",
+	projectName: "Argos - Early Warning Dashboard",
 	useBackendMock: false,
 	basename: '${BASENAME}',
 	backendRESTRoute: "${HOST}/api",
 	backendWebSocketURL: "${WEBSOCKET_HOST}/notifications",
 	enableCaching: true,
-	language: "en",
+	language: "de",
 	colors: {
 		primaryDark: "#000051",
 		primaryDarkAlpha: "rgba(0, 0, 81, 0.2)",
@@ -57,6 +57,11 @@ const config = {
 			colorLight: '#81C784'
 		},
 		{
+			name:"WARNING",
+			color: "#C99700",
+			colorLight: '#ffc107'
+		},
+		{
 			name:"FAILURE",
 			color: "#E53935",
 			colorLight: "#E57373"
@@ -68,7 +73,7 @@ const config = {
 		},
 	],
 	eventTableChunkSize: 50,
-	notificationDisplayDuration: 5000,
+	notificationDisplayDuration: 7500,
 };
 
 export default config;
