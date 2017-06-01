@@ -42,6 +42,7 @@ services:
             - deployment-config/database.env
         volumes:
             - ./config/unicorn-config.properties:/usr/local/tomcat/conf/unicorn.properties
+            - ./config/server-config.xml:/usr/local/tomcat/conf/server-template.xml
         links:
             - database
 
