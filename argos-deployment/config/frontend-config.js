@@ -1,5 +1,5 @@
 const config = {
-	projectName: "Argos - Early Warning Dashboard",
+	projectName: "Bosch Thermotechnik Early Warning Dashboard",
 	useBackendMock: false,
 	basename: '${BASENAME}',
 	backendRESTRoute: "${HOST}/api",
@@ -21,58 +21,58 @@ const config = {
 		success: "#558B2F"
 	},
 	descriptions: {
-		textNumberOfEvents: "Number of events",
-		exampleQuery: "INSERT INTO ExampleType SELECT * FROM PATTERN [[2] SimpleType]",
-		queryInputFieldHint: "Esper EPL Query",
-		queryDescriptionInputFieldHint: 'Description for query',
-		addMapping: "Add Mapping Condition",
-		toggleChildrenEvents: "Show events of children?",
-		selectEntityTypeHint: "Select Entity Type",
-		selectEventTypeHint: "Select Event Type",
-		selectTargetStatusHint: "Target Status, leave empty if no status update is required",
-		selectEntityTypeAttributeHint: "Select Entity Type Attribute",
-		selectEventTypeAttributeHint: "Select Event Type Attribute"
+        textNumberOfEvents: "Anzahl von Events",
+        exampleQuery: "INSERT INTO NewEventType SELECT * FROM FeedbackEventType",
+        queryInputFieldHint: "Esper EPL Anfrage",
+        queryDescriptionInputFieldHint: 'Beschreibung der Anfrage',
+        addMapping: "Zuordnung hinzufügen",
+		toggleChildrenEvents: "Events vo Kindern anzeigen?",
+		selectEntityTypeHint: "Entitätstyp auswählen",
+		selectEventTypeHint: "Eventtyp auswählen",
+		selectTargetStatusHint: "Zielstatus, leer lassen, wenn keine Statusänderung vorliegt.",
+		selectEntityTypeAttributeHint: "Entitätstyp Attribut auswählen",
+		selectEventTypeAttributeHint: "Eventtyp Attribut auswählen"
 	},
 	messages: {
-		notFound: "Error 404. The requested page does not exist. You found a glitch in the matrix.",
-		noEventTypes: "No event types",
-		deleteQueryMessage: "Do you really want to delete this Query?",
-		deleteEventTypeMessage: "Do you really want to delete this EventType?",
-		deleteEntityMappingMessage: "Do you really want to delete this EntityMapping?",
-		deletedQueryMessage: "Deleted event query.",
-		deletedEventTypeMessage: "Deleted event type.",
-		deletedEntityMappingMessage: "Deleted event entity mapping.",
-		createdQueryMessage: "Submitted event query.",
-		createdEventTypeMessage: "Submitted event type.",
-		createdEntityMappingMessage: "Submitted entity mapping",
-		updatedQueryMessage: "Updated event query.",
-		updatedEventTypeMessage: "Updated event type.",
-		updatedEntityMappingMessage: "Updated entity mapping",
-		requiredFieldMessage: 'Please fill out this field'
+        notFound: "Error 404. Die angeforderte Seite existiert nicht.",
+        noEventTypes: "Keine Eventtypen",
+		deleteQueryMessage: "Wollen Sie diese Query wirklich löschen?",
+		deleteEventTypeMessage: "Wollen Sie diesen Eventtypen wirklich löschen?",
+		deleteEntityMappingMessage: "Wollen sie diese Zuordnung wirklich löschen?",
+		deletedQueryMessage: "Query wurde gelöscht.",
+		deletedEventTypeMessage: "Eventtyp wurde gelöscht.",
+		deletedEntityMappingMessage: "Zuordnung wurde gelöscht.",
+		createdQueryMessage: "Query wurde gespeichert.",
+		createdEventTypeMessage: "Eventtyp wurde gespeichert.",
+		createdEntityMappingMessage: "Zuordnung wurde gespeichert.",
+		updatedQueryMessage: "Query wurde aktualisiert.",
+		updatedEventTypeMessage: "Eventtyp wurde aktualisiert",
+		updatedEntityMappingMessage: "Zuordnung wurde aktualisiert",
+		requiredFieldMessage: 'Bitte füllen Sie dieses Feld aus.'
 	},
-	statuses: [
-		{
-			name:"RUNNING",
-			color: "#4CAF50",
-			colorLight: '#81C784'
-		},
-		{
-			name:"WARNING",
-			color: "#C99700",
-			colorLight: '#ffc107'
-		},
-		{
-			name:"FAILURE",
-			color: "#E53935",
-			colorLight: "#E57373"
-		},
-		{
-			name:"UNDEFINED",
-			color: "#757575",
-			colorLight: "#BDBDBD"
-		},
-	],
-	eventTableChunkSize: 50,
+    statuses: [
+        {
+            name:"Keine Fehler",
+            color: "#4CAF50",
+            colorLight: '#81C784'
+        },
+        {
+            name:"Warnung",
+            color: "#FFBF00",
+            colorLight: "#F5DA81"
+        },
+        {
+            name:"Error",
+            color: "#E53935",
+            colorLight: "#E57373"
+        },
+        {
+            name:"Nicht definiert",
+            color: "#757575",
+            colorLight: "#BDBDBD"
+        },
+    ],
+    eventTableChunkSize: 50,
 	notificationDisplayDuration: 7500,
 };
 
