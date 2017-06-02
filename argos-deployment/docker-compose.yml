@@ -41,6 +41,7 @@ services:
         env_file:
             - deployment-config/database.env
             - deployment-config/host.env
+            - deployment-config/app_keys.env
         volumes:
             - ./config/unicorn-config.properties:/usr/local/tomcat/conf/unicorn.properties
             - ./config/server-config.xml:/usr/local/tomcat/conf/server-template.xml
