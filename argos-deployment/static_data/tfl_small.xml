@@ -21,6 +21,9 @@
                         <attribute>
                             <name>serviceTypes</name>
                         </attribute>
+                        <attribute>
+                            <name>modeName</name>
+                        </attribute>
                     </attributes>
                     <childTypes>
                         <type>
@@ -38,6 +41,12 @@
                                 <attribute>
                                     <name>naptanId</name>
                                 </attribute>
+                                <attribute>
+                                    <name>modeName</name>
+                                </attribute>
+                                <attribute>
+                                    <name>lineId</name>
+                                </attribute>
                             </attributes>
                             <childTypes>
                             </childTypes>
@@ -49,7 +58,7 @@
     </types>
     <instances>
         <instance>
-            <name>Bus</name>
+            <name>bus</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -71,6 +80,7 @@
                                                 ]
                                             ]]>
                         </serviceTypes>
+                        <modeName>bus</modeName>
                     </attributes>
                     <childInstances>
                         <instance>
@@ -81,6 +91,8 @@
                                 <lat>51.495078</lat>
                                 <lon>-0.099071</lon>
                                 <naptanId>490000073K</naptanId>
+                                <modeName>bus</modeName>
+                                <lineId>1</lineId>
                             </attributes>
                             <childInstances>
                             </childInstances>
@@ -90,7 +102,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Cable-Car</name>
+            <name>cable-car</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -99,7 +111,7 @@
             </attributes>
             <childInstances>
                 <instance>
-                    <name>Emirates-Air-Line</name>
+                    <name>emirates-air-line</name>
                     <type>Line</type>
                     <attributes>
                         <serviceTypes><![CDATA[
@@ -112,16 +124,19 @@
                                                 ]
                                             ]]>
                         </serviceTypes>
+                        <modeName>cable-car</modeName>
                     </attributes>
                     <childInstances>
                         <instance>
                             <name>Emirates Greenwich Peninsula</name>
                             <type>StopPoint</type>
                             <attributes>
-                                <id>940Gzzalgwp</id>
+                                <id>940GZZALGWP</id>
                                 <lat>51.499573</lat>
                                 <lon>0.00834</lon>
-                                <naptanId>940Gzzalgwp</naptanId>
+                                <naptanId>940GZZALGWP</naptanId>
+                                <modeName>cable-car</modeName>
+                                <lineId>emirates-air-line</lineId>
                             </attributes>
                             <childInstances>
                             </childInstances>
@@ -131,7 +146,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Coach</name>
+            <name>coach</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>False</isTflService>
@@ -142,7 +157,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Cycle</name>
+            <name>cycle</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>False</isTflService>
@@ -153,7 +168,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Cycle-Hire</name>
+            <name>cycle-hire</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -164,7 +179,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Dlr</name>
+            <name>dlr</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -173,7 +188,7 @@
             </attributes>
             <childInstances>
                 <instance>
-                    <name>Dlr</name>
+                    <name>dlr</name>
                     <type>Line</type>
                     <attributes>
                         <serviceTypes><![CDATA[
@@ -186,16 +201,19 @@
                                                 ]
                                             ]]>
                         </serviceTypes>
+                        <modeName>dlr</modeName>
                     </attributes>
                     <childInstances>
                         <instance>
-                            <name>Abbey Road Dlr Station</name>
+                            <name>Abbey Road DLR Station</name>
                             <type>StopPoint</type>
                             <attributes>
-                                <id>940Gzzdlabr</id>
+                                <id>940GZZDLABR</id>
                                 <lat>51.531926</lat>
                                 <lon>0.003737</lon>
-                                <naptanId>940Gzzdlabr</naptanId>
+                                <naptanId>940GZZDLABR</naptanId>
+                                <modeName>dlr</modeName>
+                                <lineId>dlr</lineId>
                             </attributes>
                             <childInstances>
                             </childInstances>
@@ -205,7 +223,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Interchange-Keep-Sitting</name>
+            <name>interchange-keep-sitting</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>False</isTflService>
@@ -216,7 +234,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Interchange-Secure</name>
+            <name>interchange-secure</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>False</isTflService>
@@ -227,7 +245,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>National-Rail</name>
+            <name>national-rail</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>False</isTflService>
@@ -236,7 +254,7 @@
             </attributes>
             <childInstances>
                 <instance>
-                    <name>Arriva-Trains-Wales</name>
+                    <name>arriva-trains-wales</name>
                     <type>Line</type>
                     <attributes>
                         <serviceTypes><![CDATA[
@@ -249,16 +267,19 @@
                                                 ]
                                             ]]>
                         </serviceTypes>
+                        <modeName>national-rail</modeName>
                     </attributes>
                     <childInstances>
                         <instance>
                             <name>Aberdare Rail Station</name>
                             <type>StopPoint</type>
                             <attributes>
-                                <id>910Gabdare</id>
+                                <id>910GABDARE</id>
                                 <lat>51.715058</lat>
                                 <lon>-3.443083</lon>
-                                <naptanId>910Gabdare</naptanId>
+                                <naptanId>910GABDARE</naptanId>
+                                <modeName>national-rail</modeName>
+                                <lineId>arriva-trains-wales</lineId>
                             </attributes>
                             <childInstances>
                             </childInstances>
@@ -268,7 +289,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Overground</name>
+            <name>overground</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -277,7 +298,7 @@
             </attributes>
             <childInstances>
                 <instance>
-                    <name>London-Overground</name>
+                    <name>london-overground</name>
                     <type>Line</type>
                     <attributes>
                         <serviceTypes><![CDATA[
@@ -290,16 +311,19 @@
                                                 ]
                                             ]]>
                         </serviceTypes>
+                        <modeName>overground</modeName>
                     </attributes>
                     <childInstances>
                         <instance>
                             <name>Acton Central Rail Station</name>
                             <type>StopPoint</type>
                             <attributes>
-                                <id>910Gactnctl</id>
+                                <id>910GACTNCTL</id>
                                 <lat>51.508716</lat>
                                 <lon>-0.262971</lon>
-                                <naptanId>910Gactnctl</naptanId>
+                                <naptanId>910GACTNCTL</naptanId>
+                                <modeName>overground</modeName>
+                                <lineId>london-overground</lineId>
                             </attributes>
                             <childInstances>
                             </childInstances>
@@ -309,7 +333,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Replacement-Bus</name>
+            <name>replacement-bus</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -320,7 +344,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>River-Bus</name>
+            <name>river-bus</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -329,7 +353,7 @@
             </attributes>
             <childInstances>
                 <instance>
-                    <name>Rb1</name>
+                    <name>rb1</name>
                     <type>Line</type>
                     <attributes>
                         <serviceTypes><![CDATA[
@@ -342,16 +366,19 @@
                                                 ]
                                             ]]>
                         </serviceTypes>
+                        <modeName>river-bus</modeName>
                     </attributes>
                     <childInstances>
                         <instance>
                             <name>Blackfriars Pier</name>
                             <type>StopPoint</type>
                             <attributes>
-                                <id>9300Bfr1</id>
+                                <id>9300BFR1</id>
                                 <lat>51.51075</lat>
                                 <lon>-0.106748</lon>
-                                <naptanId>9300Bfr1</naptanId>
+                                <naptanId>9300BFR1</naptanId>
+                                <modeName>river-bus</modeName>
+                                <lineId>rb1</lineId>
                             </attributes>
                             <childInstances>
                             </childInstances>
@@ -361,7 +388,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>River-Tour</name>
+            <name>river-tour</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -370,7 +397,7 @@
             </attributes>
             <childInstances>
                 <instance>
-                    <name>Circular-Cruise-Westminster</name>
+                    <name>circular-cruise-westminster</name>
                     <type>Line</type>
                     <attributes>
                         <serviceTypes><![CDATA[
@@ -383,16 +410,19 @@
                                                 ]
                                             ]]>
                         </serviceTypes>
+                        <modeName>river-tour</modeName>
                     </attributes>
                     <childInstances>
                         <instance>
                             <name>Bankside Pier</name>
                             <type>StopPoint</type>
                             <attributes>
-                                <id>9300Swk3</id>
+                                <id>9300SWK3</id>
                                 <lat>51.508369</lat>
                                 <lon>-0.096327</lon>
-                                <naptanId>9300Swk3</naptanId>
+                                <naptanId>9300SWK3</naptanId>
+                                <modeName>river-tour</modeName>
+                                <lineId>circular-cruise-westminster</lineId>
                             </attributes>
                             <childInstances>
                             </childInstances>
@@ -402,7 +432,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Tflrail</name>
+            <name>tflrail</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -411,7 +441,7 @@
             </attributes>
             <childInstances>
                 <instance>
-                    <name>Tfl-Rail</name>
+                    <name>tfl-rail</name>
                     <type>Line</type>
                     <attributes>
                         <serviceTypes><![CDATA[
@@ -424,16 +454,19 @@
                                                 ]
                                             ]]>
                         </serviceTypes>
+                        <modeName>tflrail</modeName>
                     </attributes>
                     <childInstances>
                         <instance>
                             <name>Brentwood Rail Station</name>
                             <type>StopPoint</type>
                             <attributes>
-                                <id>910Gbrtwood</id>
+                                <id>910GBRTWOOD</id>
                                 <lat>51.613605</lat>
                                 <lon>0.299586</lon>
-                                <naptanId>910Gbrtwood</naptanId>
+                                <naptanId>910GBRTWOOD</naptanId>
+                                <modeName>tflrail</modeName>
+                                <lineId>tfl-rail</lineId>
                             </attributes>
                             <childInstances>
                             </childInstances>
@@ -443,7 +476,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Tram</name>
+            <name>tram</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -452,7 +485,7 @@
             </attributes>
             <childInstances>
                 <instance>
-                    <name>Tram</name>
+                    <name>tram</name>
                     <type>Line</type>
                     <attributes>
                         <serviceTypes><![CDATA[
@@ -465,16 +498,19 @@
                                                 ]
                                             ]]>
                         </serviceTypes>
+                        <modeName>tram</modeName>
                     </attributes>
                     <childInstances>
                         <instance>
                             <name>Addiscombe Tram Stop</name>
                             <type>StopPoint</type>
                             <attributes>
-                                <id>940Gzzcradd</id>
+                                <id>940GZZCRADD</id>
                                 <lat>51.37981</lat>
                                 <lon>-0.073242</lon>
-                                <naptanId>940Gzzcradd</naptanId>
+                                <naptanId>940GZZCRADD</naptanId>
+                                <modeName>tram</modeName>
+                                <lineId>tram</lineId>
                             </attributes>
                             <childInstances>
                             </childInstances>
@@ -484,7 +520,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Tube</name>
+            <name>tube</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>True</isTflService>
@@ -493,7 +529,7 @@
             </attributes>
             <childInstances>
                 <instance>
-                    <name>Bakerloo</name>
+                    <name>bakerloo</name>
                     <type>Line</type>
                     <attributes>
                         <serviceTypes><![CDATA[
@@ -506,16 +542,19 @@
                                                 ]
                                             ]]>
                         </serviceTypes>
+                        <modeName>tube</modeName>
                     </attributes>
                     <childInstances>
                         <instance>
                             <name>Baker Street Underground Station</name>
                             <type>StopPoint</type>
                             <attributes>
-                                <id>940Gzzlubst</id>
+                                <id>940GZZLUBST</id>
                                 <lat>51.522883</lat>
                                 <lon>-0.15713</lon>
-                                <naptanId>940Gzzlubst</naptanId>
+                                <naptanId>940GZZLUBST</naptanId>
+                                <modeName>tube</modeName>
+                                <lineId>bakerloo</lineId>
                             </attributes>
                             <childInstances>
                             </childInstances>
@@ -525,7 +564,7 @@
             </childInstances>
         </instance>
         <instance>
-            <name>Walking</name>
+            <name>walking</name>
             <type>TransportMode</type>
             <attributes>
                 <isTflService>False</isTflService>
