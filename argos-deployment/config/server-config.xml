@@ -147,7 +147,8 @@
 
 			<Host name="localhost"  appBase="webapps"
 			      unpackWARs="true" autoDeploy="true">
-				<Context docBase="Unicorn" path="${BASENAME}/corny"  reloadable="true">
+				<Alias>${HOST}</Alias>
+				<Context docBase="Unicorn" path="${BASENAME}Unicorn"  reloadable="true">
 					<WatchedResource>WEB-INF/web.xml</WatchedResource>
 				</Context>
 				<!-- SingleSignOn valve, share authentication between web applications
