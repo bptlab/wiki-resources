@@ -67,7 +67,7 @@ const config = {
             colorLight: "#E57373"
         },
         {
-            name:"Nicht definiert",
+            name:"UNDEFINED",
             color: "#757575",
             colorLight: "#BDBDBD"
         },
