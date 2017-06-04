@@ -26,7 +26,7 @@ const config = {
         queryInputFieldHint: "Esper EPL Anfrage",
         queryDescriptionInputFieldHint: 'Beschreibung der Anfrage',
         addMapping: "Zuordnung hinzufügen",
-		toggleChildrenEvents: "Events vo Kindern anzeigen?",
+		toggleChildrenEvents: "Events von Kindern anzeigen",
 		selectEntityTypeHint: "Entitätstyp auswählen",
 		selectEventTypeHint: "Eventtyp auswählen",
 		selectTargetStatusHint: "Zielstatus, leer lassen, wenn keine Statusänderung vorliegt.",
