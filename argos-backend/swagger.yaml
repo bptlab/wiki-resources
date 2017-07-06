@@ -1,0 +1,716 @@
+swagger: '2.0'
+info:
+  version: '2.1.0'
+  title: Argos-Backend
+paths:
+  '/api/entitytype/hierarchy':
+    get:
+      description: Returns the hierarchy overview of all `EntityTypes`.
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: Hierarchy
+            type: array
+            items:
+              title: HierarchyLayers
+              type: array
+              items:
+                title: EntityType
+                type: object
+                properties:
+                  Id:
+                    type: integer
+                    format: long
+                  ParentId:
+                    type: integer
+                    format: long
+                  Name:
+                    type: string
+                    
+  '/api/entitytype/{typeId}/attributes':
+    get:
+      description: Returns an array of `TypeAttributes`.
+      parameters:
+        - name: typeId
+          in: path
+          description: Unique identifier of the `EntityType`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful reponse.
+          schema:
+            title: TypeAttributes
+            type: array
+            items:
+              title: TypeAttribute
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: long
+                Name:
+                  type: string
+                  
+  '/api/entitytype/{typeId}/entitymappings':
+    get:
+      description: Returns an array of `EntityEventMappings`.
+      parameters:
+        - name: typeId
+          in: path
+          description: Unique identifier of the `EntityType`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: EventEntityMappings
+            type: array
+            items:
+              title: EventEntityMapping
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: long
+                EventTypeId:
+                  type: integer
+                  format: long
+                EntityTypeId:
+                  type: integer
+                  format: long
+                TargetStatus:
+                  type: string
+                EventEntityMappingConditions:
+                  type: array
+                  items:
+                    title: EventEntityMappingCondition
+                    type: object
+                    properties:
+                      EventTypeAttributeId:
+                        type: integer
+                        format: long
+                      EntityTypeAttributeId:
+                        type: integer
+                        format: long
+                        
+  '/api/entity/{entityId}/children/type/{typeId}/{attributeNames}':
+    get:
+      description: >-
+        Returns an array of `Entities`, which are children of the `Entity` given
+        by it's id.
+      parameters:
+        - name: entityId
+          in: path
+          description: Unique identifier of the parent `Entity`.
+          required: true
+          type: integer
+          format: long
+        - name: typeId
+          in: path
+          description: Unique identifier of the child `EntityType`.
+          required: true
+          type: integer
+          format: long
+        - name: attributeNames
+          in: path
+          description: >-
+            A list (plus ('+') separated strings), which contains the names of all
+            `TypeAttributes` to include in the response.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: Entities
+            type: array
+            items:
+              title: Entity
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: long
+                TypeId:
+                  type: integer
+                  format: long
+                ParentId:
+                  type: integer
+                  format: long
+                Name:
+                  type: string
+                Status:
+                  type: string
+                HasChildren:
+                  type: boolean
+                Attributes:
+                  type: array
+                  items:
+                    title: Attribute
+                    type: object
+                    properties:
+                      Name:
+                        type: string
+                      Value:
+                        type: string
+                        
+  '/api/entity/{entityId}':
+    get:
+      description: Returns a single `Entity` including all the `TypeAttributes`.
+      parameters:
+        - name: entityId
+          in: path
+          description: Unique identifier of the `Entity`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: Entity
+            type: object
+            properties:
+              Id:
+                type: integer
+                format: long
+              TypeId:
+                type: integer
+                format: long
+              ParentId:
+                type: integer
+                format: long
+              Name:
+                type: string
+              Status:
+                type: string
+              HasChildren:
+                type: boolean
+              Attributes:
+                type: array
+                items:
+                  title: Attribute
+                  type: object
+                  properties:
+                    Name:
+                      type: string
+                    Value:
+                      type: string
+                      
+  '/api/entity/{entityId}/eventtypes/{inlcudeChildEvents}':
+    get:
+      description: >-
+        Returns an array of `EventTypes`, which occured for this specific
+        `Entity`.
+      parameters:
+        - name: entityId
+          in: path
+          description: Unique identifier of the `Entity`.
+          required: true
+          type: integer
+          format: long
+        - name: inlcudeChildEvents
+          in: path
+          description: Indicates, whether child events should be considered.
+          required: true
+          type: boolean
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: EventTypes
+            type: array
+            items:
+              title: EventType
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: long
+                Name:
+                  type: string
+                NumberOfEvents:
+                  type: integer
+                  format: long
+                TimestampAttributeId:
+                  type: integer
+                  format: long
+                  
+  '/api/entity/{entityId}/eventtype/{typeId}/events/{includeChildEvents}/{startIndex}/{endIndex}':
+    get:
+      description: 'Returns an array of `Events`, which occured for the given `Entity`.'
+      parameters:
+        - name: entityId
+          in: path
+          description: Unique identifier of the `Entity`.
+          required: true
+          type: integer
+          format: long
+        - name: typeId
+          in: path
+          description: Unique identifier of the `EventType`.
+          required: true
+          type: integer
+          format: long
+        - name: includeChildEvents
+          in: path
+          description: Indicates, whether child events should be included.
+          required: true
+          type: boolean
+        - name: startIndex
+          in: path
+          description: First index of the `Events` to return.
+          required: true
+          type: integer
+        - name: endIndex
+          in: path
+          description: Last index of the `Events` to return.
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: Events
+            type: array
+            items:
+              title: Event
+              type: object
+              properties:
+                Attributes:
+                  type: array
+                  items:
+                    title: Attribute
+                    type: object
+                    properties:
+                      Name:
+                        type: string
+                      Value:
+                        type: string
+                        
+  /api/eventtypes:
+    get:
+      description: Returns an array of all `EventTypes`.
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: EventTypes
+            type: array
+            items:
+              title: EventType
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: long
+                Name:
+                  type: string
+                NumberOfEvents:
+                  type: integer
+                  format: long
+                TimestampAttributeId:
+                  type: integer
+                  format: long
+                  
+  '/api/eventtype/{typeId}':
+    get:
+      description: Returns a single `EventType`.
+      parameters:
+        - name: typeId
+          in: path
+          description: Unique identifier of the `EventType`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: EventType
+            type: object
+            properties:
+              Id:
+                type: integer
+                format: long
+              Name:
+                type: string
+              NumberOfEvents:
+                type: integer
+                format: long
+              TimestampAttributeId:
+                type: integer
+                format: long
+                
+  /api/eventtype/create:
+    post:
+      description: Creates a new `EventType`.
+      parameters:
+        - name: EventType
+          in: body
+          description: The `EventType` to create.
+          required: true
+          schema:
+            title: EventType
+            type: object
+            properties:
+              Name:
+                type: string
+              TimestampAttributeName:
+                type: string
+              TypeAttributes:
+                type: array
+                items:
+                  title: TypeAttribute
+                  type: object
+                  properties:
+                    Name:
+                      type: string
+      responses:
+        '200':
+          description: Successful response.
+          
+  '/api/eventtype/{typeId}/delete':
+    delete:
+      description: Deletes a given `EventType`.
+      parameters:
+        - name: typeId
+          in: path
+          description: Unique identifier of the `EventType`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful response.
+          
+  '/api/eventtype/{typeId}/attributes':
+    get:
+      description: Returns an array of `TypeAttributes`.
+      parameters:
+        - name: typeId
+          in: path
+          description: Unique identifier of the `EventType`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful reponse.
+          schema:
+            title: TypeAttributes
+            type: array
+            items:
+              title: TypeAttribute
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: long
+                Name:
+                  type: string
+                  
+  '/api/eventtype/{typeId}/queries':
+    get:
+      description: Returns an array of `EventQueries`.
+      parameters:
+        - name: typeId
+          in: path
+          description: Unique identifier of the `EventType`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful reponse.
+          schema:
+            title: EventQueries
+            type: array
+            items:
+              title: EventQuery
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: long
+                TypeId:
+                  type: integer
+                  format: long
+                Description:
+                  type: string
+                Query:
+                  type: string
+                  
+  '/api/eventtype/{typeId}/entitymappings':
+    get:
+      description: Returns an array of `EventEntityMappings`.
+      parameters:
+        - name: typeId
+          in: path
+          description: Unique identifier of the `EventType`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: EventEntityMappings
+            type: array
+            items:
+              title: EventEntityMapping
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: long
+                EventTypeId:
+                  type: integer
+                  format: long
+                EntityTypeId:
+                  type: integer
+                  format: long
+                TargetStatus:
+                  type: string
+                EventEntityMappingConditions:
+                  type: array
+                  items:
+                    title: EventEntityMappingCondition
+                    type: object
+                    properties:
+                      EventTypeAttributeId:
+                        type: integer
+                        format: long
+                      EntityTypeAttributeId:
+                        type: integer
+                        format: long
+                        
+  '/api/eventquery/{queryId}':
+    get:
+      description: Returns one specfic 'EventQuery'.
+      parameters:
+        - name: queryId
+          in: path
+          description: Unique identifier of the `EventQuery`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: EventQuery
+            type: object
+            properties:
+              Id:
+                type: integer
+                format: long
+              TypeId:
+                type: integer
+                format: long
+              Description:
+                type: string
+              Query:
+                type: string
+                        
+  '/api/eventquery/create':
+    post:
+      description: Creates a new `EventQuery`.
+      parameters:
+        - name: eventQuery
+          in: body
+          description: The `EventQuery` to create.
+          required: true
+          schema:
+            title: EventQuery
+            type: object
+            properties:
+              EventTypeId:
+                type: integer
+                format: long
+              Description:
+                type: string
+              Query:
+                type: string
+      responses:
+        '200':
+          description: Successful response.
+          
+  '/api/eventquery/{queryId}/delete':
+    delete:
+      description: Deletes a given `EventQuery`.
+      parameters:
+        - name: queryId
+          in: path
+          description: Unique identifier of the `EventQuery`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful response.
+          
+  '/api/eventquery/{queryId}/edit':
+    put:
+      description: Modifies a given `EventQuery`.
+      parameters:
+        - name: queryId
+          in: path
+          description: Unique identifier of the `EventQuery`.
+          required: true
+          type: integer
+          format: long
+        - name: eventQuery
+          in: body
+          description: The `EventQuery` to set.
+          required: true
+          schema:
+            title: EventQuery
+            type: object
+            properties:
+              Description:
+                type: string
+              Query:
+                type: string
+      responses:
+        '200':
+          description: Successful response.
+          
+  '/api/entitymapping/{mappingId}':
+    get:
+      description: Returns one specific `EventEntityMapping`, identified by its id.
+      parameters:
+        - name: mappingId
+          in: path
+          description: Unique identifier of the `EventEntityMapping`.
+          required: true
+          type: integer
+          format: long
+          
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            title: EventEntityMapping
+            type: object
+            properties:
+              Id:
+                type: integer
+                format: long
+              EventTypeId:
+                type: integer
+                format: long
+              EntityTypeId:
+                type: integer
+                format: long
+              TargetStatus:
+                type: string
+              EventEntityMappingConditions:
+                type: array
+                items:
+                  title: EventEntityMappingCondition
+                  type: object
+                  properties:
+                    EventTypeAttributeId:
+                      type: integer
+                      format: long
+                    EntityTypeAttributeId:
+                      type: integer
+                      format: long
+            
+  /api/entitymapping/create:
+    post:
+      description: Creates a new `EventEntityMapping`.
+      parameters:
+        - name: eventEntityMapping
+          in: body
+          description: The `EventEntityMapping` to create.
+          required: true
+          schema:
+            title: EventEntityMapping
+            type: object
+            properties:
+              EventTypeId:
+                type: integer
+                format: long
+              EntityTypeId:
+                type: integer
+                format: long
+              TargetStatus:
+                type: string
+              EventEntityMappingConditions:
+                type: array
+                items:
+                  title: EventEntityMappingCondition
+                  type: object
+                  properties:
+                    EventTypeAttributeId:
+                      type: integer
+                      format: long
+                    EntityTypeAttributeId:
+                      type: integer
+                      format: long
+      responses:
+        '200':
+          description: Successful response.
+          
+  '/api/entitymapping/{mappingId}/delete':
+    delete:
+      description: Deletes the given `EventEntityMapping`.
+      parameters:
+        - name: mappingId
+          in: path
+          description: Unique identifier of the `EventEntityMapping`.
+          required: true
+          type: integer
+          format: long
+      responses:
+        '200':
+          description: Successful response.
+          
+  '/api/entitymapping/{mappingId}/edit':
+    put:
+      description: Modifies a given `EventEntityMapping`.
+      parameters:
+        - name: mappingId
+          in: path
+          description: Unique identifier of the `EventEntityMapping`.
+          required: true
+          type: integer
+          format: long
+        - name: eventEntityMapping
+          in: body
+          description: The `EventEntityMapping` to set.
+          required: true
+          schema:
+            title: EventEntityMapping
+            type: object
+            properties:
+              EventTypeId:
+                type: integer
+                format: long
+              EntityTypeId:
+                type: integer
+                format: long
+              TargetStatus:
+                type: string
+              EventEntityMappingConditions:
+                type: array
+                items:
+                  title: EventEntityMappingCondition
+                  type: object
+                  properties:
+                    EventTypeAttributeId:
+                      type: integer
+                      format: long
+                    EntityTypeAttributeId:
+                      type: integer
+                      format: long
+      responses:
+        '200':
+          description: Successful response.
